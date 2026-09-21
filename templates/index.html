@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Port Scanner</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>Port Scanner</h1>
+    <p>TCP network diagnostic tool</p>
+  </div>
+  <div class="card">
+    <label>Target</label>
+    <input id="target" type="text" placeholder="127.0.0.1" value="127.0.0.1">
+    <div class="port-row">
+      <div><label>Start Port</label><input id="startPort" type="number" value="1" min="1" max="65535"></div>
+      <div><label>End Port</label><input id="endPort" type="number" value="100" min="1" max="65535"></div>
+    </div>
+    <button id="scanButton" onclick="startScan()">Start Scan</button>
+    <div id="status"></div>
+  </div>
+  <div class="card">
+    <div class="results-header"><h2>Open Ports</h2><span id="count">0</span></div>
+    <table>
+      <thead><tr><th>Port</th><th>State</th><th>Service</th></tr></thead>
+      <tbody id="results"><tr><td colspan="3" class="empty">No scan results yet.</td></tr></tbody>
+    </table>
+  </div>
+</div>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
